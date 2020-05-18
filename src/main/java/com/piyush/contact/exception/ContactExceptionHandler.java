@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.piyush.contact.constants.ResponseMessages;
 import com.piyush.contact.model.ResponseError;
 
 import lombok.extern.slf4j.Slf4j;
@@ -85,4 +86,18 @@ public class ContactExceptionHandler {
 		return responseError;
 	}
 
+	/**
+	 * This method handles the internal server errors
+	 * 
+	 * @param Exception
+	 * @return ResponseError
+	 */
+	@ExceptionHandler(Exception.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	public ResponseError handleInternalServerError(Exception exception) {
+		log.error("Internal Server Error  : ", exception);
+		ResponseError responseError = new ResponseError(HttpStatus.INTERNAL_SERVER_ERROR,
+				ResponseMessages.INTERNAL_SERVER_ERROR);
+		return responseError;
+	}
 }

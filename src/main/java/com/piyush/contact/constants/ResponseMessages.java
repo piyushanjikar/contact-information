@@ -14,7 +14,9 @@ public enum ResponseMessages {
 	/*
 	 * Error code starts from 1000
 	 */
-	ENTITY_NOT_FOUND(1001, "Entity does not exist"), DUPLICATE_CONTACT(1002, "Entity already exist"),
+	ENTITY_NOT_FOUND(1001, "Entity does not exist"),
+	DUPLICATE_CONTACT(1002, "Entity already exist"),
+	INTERNAL_SERVER_ERROR(1003, "Internal Server Error"),
 
 	/*
 	 * Success code series starts from 2000
